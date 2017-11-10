@@ -1,19 +1,41 @@
 # Instalación de ownCloud utilizando Vagrant, Ubuntu 16.04 (xenial), Apache, PHP7 y MySQL  
+Ésta guía está basada en el siguiente [tutorial](https://hipertextual.com/archivo/2014/10/owncloud/) el cual lo adapté de acuerdo a mis necesidades.
+> Nota: Se asume que [Vagrant](https://www.vagrantup.com/) ya está instalado en el sistema host. 
+#### Requerimientos
+- Vagrant
+- Git
 
-Para el siguiente tutorial se asume que vagrant ya está instalado en el sistema host.
-
-### Configurando Vagrant
+### Clonar el repositorio
 ```
-$ vagrant init ubuntu/xenial64
+$ git clone https://github.com/Arcangel617/ownCloud-Vagrant-LAMP.git
 ```
-### Editando el Vagrantfile
+### Inicializamos nuestra máquina virtual
 ```
-$ nano VagrantFile
+$ cd ownCloud-Vagrant-LAMP && vagrant up
 ```
-### Instalar LAMP stack
+Una vez que nuestra máquina esté corriendo accedemos a ella de la mediante ssh de la siguiente forma:
 ```
 $ vagrant ssh
 ```
+Si todo fue bien veremos algo como esto:
+```
+Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.4.0-98-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+Last login: Fri Nov 10 06:23:02 2017 from 10.0.2.2
+ubuntu@ubuntu-xenial:~$ 
+```
+### Instalar LAMP stack
 Una vez que hayamos accedido procedemos a instalar los siguientes paquetes 
 ```
 $ sudo apt-get install language-pack-es
