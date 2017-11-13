@@ -61,7 +61,7 @@ Ahora debemos editar una línea del archivo apache2.conf
 ```
 $ sudo nano /etc/apache2/apache2.conf 
 ```
-Guardamos los cambios y reiniciamos el servicio
+Una vez allí hay que buscar una sección llamada <directory /var/www/>. Allí tendremos que modificar la línea "AllowOverride None" por "AllowOverride All". Guardamos los cambios y reiniciamos el servicio
 ```
 $ sudo service apache2 restart
 ```
@@ -94,6 +94,32 @@ Una vez allí le otorgamos los siguientes permisos:
 $ sudo chown -R www-data:www-data owncloud/
 ```
 #### Configurar la base da datos
+Primero entramos a MySQL:
 ```
 $ mysql -u root -p
 ```
+
+Creamos la base de datos:
+```
+> CREATE DATABASE owncloud;
+```
+
+Asignamos la base de datos al usuario owncloud con la contraseña (pass) que queráis:
+```
+> GRANT ALL ON owncloud.* TO 'owncloud'@'localhost' IDENTIFIED BY 'tu_password';
+```
+y salimos:
+```
+> quit;
+```
+#### Instalación de ownCloud
+Para instalar ownCloud nos tendremos que dirigir a nuestro navegador para crear nuestra cuenta de administrador.
+> 192.XXX.XXX.XXX/owncloud
+
+
+Aquí se deberá una cuenta de administrador, los datos del directorio se dejaran por defecto y se deberá rellenar la configuración de la base de datos de la siguiente manera:
+
+> Usuario de la base de datos: owncloud
+> Password de la base de datos: tu_password
+> Nombre de la base de datos: owncloud
+> localhost
